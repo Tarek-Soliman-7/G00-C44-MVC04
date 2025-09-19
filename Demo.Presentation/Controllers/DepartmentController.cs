@@ -72,11 +72,7 @@ namespace Demo.Presentation.Controllers
         [HttpGet]
         public IActionResult Details(int? id)
         {
-<<<<<<< HEAD
             if (!id.HasValue)
-=======
-            if(!id.HasValue)
->>>>>>> 03ddde3aa7fdfdcc96bf2b8c8a0a9cd0253be9e5
             {
                 return BadRequest();//400
             }
@@ -151,7 +147,7 @@ namespace Demo.Presentation.Controllers
                     {
                         _logger.LogError($"Department Cannot Be Updated Because: {ex}");
                         return View("ErrorView", ex);
-<
+
                     }
                     //Deployment
                 }

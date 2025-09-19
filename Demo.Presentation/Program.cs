@@ -22,23 +22,21 @@ namespace Demo.Presentation
             //builder.Services.AddScoped<AppDbContext>();
 
             //AddDbContext => Allow DI DbContext 
-            //builder.Services.AddDbContext<AppDbContext>(op=>
-            //{
-            //    //op.UseSqlServer("ConnectionString");
-            //    //op.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultconnectionString"]);
-            //    //op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultconnectionString"]);
-            //    op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultConnection"]);
-            //    //op.UseSqlServer(builder.Configuration.GetConnectionString("DefaultconnectionString"));
+            builder.Services.AddDbContext<AppDbContext>(op =>
+            {
+                //op.UseSqlServer("ConnectionString");
+                //op.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultconnectionString"]);
+                //op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultconnectionString"]);
+                op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultConnection"]);
+                //op.UseSqlServer(builder.Configuration.GetConnectionString("DefaultconnectionString"));
 
 
-            //});
-            builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        b => b.MigrationsAssembly("Demo.Presentation")   // هنا بتحدد مكان الـ migrations
-    ));
+            });
+
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 
             #endregion
             var app = builder.Build();

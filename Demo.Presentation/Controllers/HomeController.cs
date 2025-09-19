@@ -1,5 +1,5 @@
 using System.Diagnostics;
-using Demo.Presentation.Models;
+using Demo.DataAccessDAL_Infrastructure_.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Presentation.Controllers
@@ -23,10 +23,7 @@ namespace Demo.Presentation.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
+     
     }
 }

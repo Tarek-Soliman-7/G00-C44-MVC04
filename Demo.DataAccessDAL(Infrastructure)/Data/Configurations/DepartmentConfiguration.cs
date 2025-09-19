@@ -1,6 +1,6 @@
 ﻿namespace Demo.DataAccessDAL_Infrastructure_.Data.Configurations
 {
-    internal class DepartmentConfigurations : IEntityTypeConfiguration<Department>
+    internal class DepartmentConfiguration : IEntityTypeConfiguration<Department>
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {

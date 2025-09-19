@@ -10,7 +10,7 @@ namespace Demo.BusinessLogicBLL.DTOS
     {
         public int Id { get; set; }
         public int CreatedBy { get; set; }
-        public DateOnly? CreatedOn { get; set; }
+        public DateOnly? DateOfCreation { get; set; }
         public int ModifiedBy { get; set; }
         public DateOnly? ModifiedOn { get; set; }
         public bool IsDeleted { get; set; }

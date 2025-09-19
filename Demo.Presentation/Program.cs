@@ -1,9 +1,10 @@
-using Demo.BusinessLogicBLL.Services;
+﻿using Demo.BusinessLogicBLL.Services;
 using Demo.BusinessLogicBLL.Services.Interfaces;
 using Demo.DataAccessDAL_Infrastructure_.Data.Contexts;
 using Demo.DataAccessDAL_Infrastructure_.Data.Repositories;
 using Demo.DataAccessDAL_Infrastructure_.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
 namespace Demo.Presentation
 {
@@ -21,16 +22,21 @@ namespace Demo.Presentation
             //builder.Services.AddScoped<AppDbContext>();
 
             //AddDbContext => Allow DI DbContext 
-            builder.Services.AddDbContext<AppDbContext>(op=>
-            {
-                //op.UseSqlServer("ConnectionString");
-                //op.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultconnectionString"]);
-                //op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultconnectionString"]);
-                //op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultconnectionString"]);
-                op.UseSqlServer(builder.Configuration.GetConnectionString("DefaultconnectionString"));
+            //builder.Services.AddDbContext<AppDbContext>(op=>
+            //{
+            //    //op.UseSqlServer("ConnectionString");
+            //    //op.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultconnectionString"]);
+            //    //op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultconnectionString"]);
+            //    op.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings")["DefaultConnection"]);
+            //    //op.UseSqlServer(builder.Configuration.GetConnectionString("DefaultconnectionString"));
 
 
-            });
+            //});
+            builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        b => b.MigrationsAssembly("Demo.Presentation")   // هنا بتحدد مكان الـ migrations
+    ));
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 

@@ -34,7 +34,7 @@ namespace Demo.BusinessLogicBLL.Factories
                 Description = Dept.Description,
                 Code = Dept.Code,
                 CreatedBy = Dept.CreatedBy,
-                CreatedOn = Dept.CreatedOn.HasValue ? DateOnly.FromDateTime(Dept.CreatedOn.Value) : default,
+                DateOfCreation = Dept.CreatedOn.HasValue ? DateOnly.FromDateTime(Dept.CreatedOn.Value) : default,
                 ModifiedBy = Dept.ModifiedBy,
                 ModifiedOn = Dept.ModifiedOn.HasValue ? DateOnly.FromDateTime(Dept.ModifiedOn.Value) : default,
                 IsDeleted = Dept.IsDeleted,

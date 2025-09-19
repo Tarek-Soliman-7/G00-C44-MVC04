@@ -3,6 +3,7 @@ using Demo.BusinessLogicBLL.Factories;
 using Demo.BusinessLogicBLL.Services.Interfaces;
 using Demo.DataAccessDAL_Infrastructure_.Data.Contexts;
 using Demo.DataAccessDAL_Infrastructure_.Data.Repositories;
+using Demo.DataAccessDAL_Infrastructure_.Data.Repositories.Interfaces;
 using Demo.DataAccessDAL_Infrastructure_.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,9 +14,14 @@ using System.Threading.Tasks;
 
 namespace Demo.BusinessLogicBLL.Services
 {
-    public class DepartmentService(DepartmentRepository _departmentRepository) : IDepartmentService
+    public class DepartmentService : IDepartmentService
     {
+        private readonly IDepartmentRepository _departmentRepository;
 
+        public DepartmentService(IDepartmentRepository departmentRepository)
+        {
+            _departmentRepository = departmentRepository;
+        }
 
         // Methods Interacts with Repository
 

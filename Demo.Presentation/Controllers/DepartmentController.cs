@@ -165,7 +165,7 @@ namespace Demo.Presentation.Controllers
         //    var Dept = _departmentService.GetDeptById(id.Value);
         //    if (Dept is null) return NotFound();
         //    return View(Dept);
-        //}
+        ///}
         [HttpPost]
         public IActionResult Delete(int id)
         {

@@ -18,6 +18,8 @@ namespace Demo.BusinessLogicBLL.DTOS
         public DateOnly HiringDate { get; set; }
 
         public decimal? Salary {  get; set; }
+        public int Age { get; set; }
+        public bool IsActive { get; set; }
 
     }
 }

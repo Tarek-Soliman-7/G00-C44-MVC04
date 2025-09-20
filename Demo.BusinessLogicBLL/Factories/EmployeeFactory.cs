@@ -30,16 +30,20 @@ namespace Demo.BusinessLogicBLL.Factories
         {
             return new EmployeeDetailsDto
             {
-                Salary = E.Salary!.Value,
+                Salary = E.Salary??0,
                 Id = E.Id,
                 Address = E.Address,
-                Age = E.Age!.Value,
+                Age = E.Age??0,
                 Email = E.Email,
                 EmployeeType=E.EmployeeType,
                 Gender = E.Gender,
                 HiringDate = E.HiringDate.HasValue ? DateOnly.FromDateTime(E.HiringDate.Value) : default,
                 Name = E.Name,
-                PhoneNumber=E.PhoneNumber
+                PhoneNumber=E.PhoneNumber,
+                CreatedOn=E.CreatedOn.HasValue?DateOnly.FromDateTime(E.CreatedOn.Value):default,
+                CreatedBy=E.CreatedBy,
+                ModifiedOn=E.ModifiedOn.HasValue ? DateOnly.FromDateTime(E.ModifiedOn.Value) : default,
+                ModifiedBy=E.ModifiedBy
                 
             };
         }
